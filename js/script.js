@@ -2,18 +2,19 @@ const canvas = document.getElementById('fundo-codigo');
 const ctx = canvas.getContext('2d');
 let W, H, dpr, colunas = [];
 
-const TAM_FONTE = 14;      
-const ESPACO_COL = 24;     
+const TAM_FONTE = 15;     
+const ESPACO_COL = 22;     
 
 function novaColuna(x, aleatorioY) {
   const paleta = Math.random();
   return {
     x: x,
-    y: aleatorioY ? Math.random() * H : -Math.random() * H * 0.4,
-    vel: 0.2 + Math.random() * 0.5, 
-    comprimento: 10 + Math.floor(Math.random() * 18), 
+    y: aleatorioY ? Math.random() * H : -Math.random() * H * 0.5,
+    vel: 0.6 + Math.random() * 1.6,
+    comprimento: 10 + Math.floor(Math.random() * 18),
     chars: [],
-    cor: paleta < 0.25 ? [56, 225, 212] : paleta < 0.45 ? [14, 165, 233] : [71, 85, 105]
+
+    cor: paleta < 0.20 ? [240, 99, 15] : paleta < 0.45 ? [74, 158, 255] : [180, 195, 215]
   };
 }
 
@@ -39,17 +40,16 @@ window.addEventListener('resize', redimensionar);
 const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function desenhar() {
-  ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
-  ctx.fillRect(0, 0, W, H);
-  
-  ctx.font = '500 ' + TAM_FONTE + 'px "IBM Plex Mono", monospace';
+  ctx.clearRect(0, 0, W, H);
+  ctx.font = '600 ' + TAM_FONTE + 'px "IBM Plex Mono", monospace';
   ctx.textAlign = 'center';
 
   for (let i = 0; i < colunas.length; i++) {
     const c = colunas[i];
     c.y += c.vel;
 
-    if (Math.random() < 0.01) {
+   
+    if (Math.random() < 0.06) {
       c.chars[Math.floor(Math.random() * c.chars.length)] = Math.random() < 0.5 ? '0' : '1';
     }
 
@@ -60,12 +60,14 @@ function desenhar() {
       if (yChar < -TAM_FONTE || yChar > H + TAM_FONTE) continue;
 
       if (j === 0) {
-        ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',0.6)';
-        ctx.shadowBlur = 6;
-        ctx.fillStyle = 'rgba(' + Math.min(r + 50, 255) + ',' + Math.min(g + 50, 255) + ',' + Math.min(b + 50, 255) + ',0.9)';
+     
+        ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',0.8)';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = 'rgba(' + Math.min(r + 60, 255) + ',' + Math.min(g + 60, 255) + ',' + Math.min(b + 60, 255) + ',0.9)';
       } else {
         ctx.shadowBlur = 0;
-        const alpha = Math.max(0, 0.5 * (1 - j / c.comprimento));
+    
+        const alpha = Math.max(0, 0.55 * (1 - j / c.comprimento));
         ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
       }
 
@@ -96,14 +98,14 @@ function atualizarVersao() {
 
   barra.style.width = (p * 100) + '%';
 
-  if (p >= 0.98) {
-    hudVersao.textContent = 'v1.0.0-stable';
-    hudStatus.innerHTML = '<span class="ok">✓ build succeeded</span>';
+  if (p >= 0.99) {
+    hudVersao.textContent = 'v1.0-beta';
+    hudStatus.innerHTML = '<span class="ok">✓ versão completa</span>';
   } else {
     const minor = Math.floor(p * 9) + 1;
     const patch = Math.floor((p * 9 % 1) * 10);
     hudVersao.textContent = 'v0.' + minor + '.' + patch;
-    hudStatus.innerHTML = 'dotnet watch run… ' + Math.round(p * 100) + '%';
+    hudStatus.innerHTML = 'construindo… ' + Math.round(p * 100) + '%';
   }
 }
 
@@ -117,5 +119,5 @@ setInterval(() => {
 
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visivel'); });
-}, { threshold: 0.1 });
+}, { threshold: 0.12 });
 document.querySelectorAll('.revelar').forEach((el) => observador.observe(el));
