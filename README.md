@@ -52,8 +52,8 @@ A organização dos arquivos do projeto segue o padrão de desenvolvimento web:
 
 ## 💻 Como Executar o Projeto
 
-Como o projeto foi desenvolvido puramente com tecnologias client-side (Front-end), executá-lo localmente é muito simples:
+Como o projeto foi desenvolvido puramente com tecnologias client-side (Front-end), executá-block localmente é muito simples:
 
 1. Clone o repositório:
    ```bash
-   git clone [https://github.com/Saraevyn/my-journey-entra21.git](https://github.com/Saraevyn/my-journey-entra21.git)
+   git clone [https://github.com/Saraevyn/saraevyn.github.io.git](https://github.com/Saraevyn/saraevyn.github.io.git)
