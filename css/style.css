@@ -385,27 +385,29 @@ h3 {
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;          /* 🔴 SÊNIOR FIX: Dobrado de 12px para 24px de distância pura entre um card e outro */
+  gap: 24px;          
   max-width: 760px;
+
 }
 
 .nota {
   display: grid;
   grid-template-columns: 24px 1fr;
-  gap: 20px;          /* 🔴 SÊNIOR FIX: Aumentou o espaço entre o ícone (+ ou ~) e o texto */
-  padding: 28px 32px; /* 🔴 SÊNIOR FIX: Card mais robusto. 28px em cima/baixo e 32px nas laterais */
-  border-radius: 12px;/* 🔴 SÊNIOR FIX: De 8px para 12px. Cards maiores pedem cantos um pouco mais arredondados */
+  gap: 20px;        
+  padding: 28px 32px; 
+  border-radius: 12px;
   background: var(--superficie);
   border: 1px solid var(--borda);
   transition: all 0.2s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra levemente mais escura para destacar o card flutuando */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+  margin-bottom: 10px;
 }
 
 .nota:hover {
   border-color: var(--accent);
   transform: translateX(4px);
-  position: relative; /* 🔴 FIX: Necessário para o z-index funcionar */
-  z-index: 10;        /* 🔴 FIX: Garante que a borda do card focado fique POR CIMA dos outros cards */
+  position: relative; 
+  z-index: 10;        
 }
 
 .nota .sinal {
@@ -429,13 +431,13 @@ h3 {
 .nota .det {
   color: var(--suave);
   display: block;
-  margin-top: 6px; /* 🔴 FIX: Ajustado de 3px para 6px para separar a descrição do título */
+  margin-top: 6px; 
   font-size: 0.85rem;
 }
 
 .habs {
   display: grid;
-  gap: 12px; /* 🔴 FIX: Padronizado com as outras listas (12px) */
+  gap: 12px; 
   max-width: 760px;
 }
 
@@ -446,8 +448,8 @@ h3 {
   gap: 20px;
   background: var(--superficie);
   border: 1px solid var(--borda);
-  border-radius: 8px; /* 🔴 FIX: Padronizado em 8px */
-  padding: 24px; /* 🔴 FIX: Uniformizado para 24px geral, mantendo simetria perfeita */
+  border-radius: 8px; 
+  padding: 24px; 
   transition: all 0.2s;
 }
 
@@ -464,13 +466,13 @@ h3 {
 .hab p {
   color: var(--suave);
   font-size: 0.85rem;
-  margin-top: 6px; /* 🔴 FIX: Ajustado de 2px para 6px */
+  margin-top: 6px; 
 }
 
 .hab .selo {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.65rem;
-  padding: 6px 12px; /* 🔴 FIX: Ajuste fino do tamanho do badge */
+  padding: 6px 12px; 
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -501,17 +503,17 @@ h3 {
 
 .builds {
   display: grid;
-  gap: 12px; /* 🔴 FIX: Ajustado para 12px */
+  gap: 12px; 
   max-width: 760px;
 }
 
 .build {
   border: 1px solid var(--borda);
-  border-radius: 8px; /* 🔴 FIX: 8px */
+  border-radius: 8px; 
   padding: 24px;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 20px; /* 🔴 FIX: Aumentado de 16px para 20px para afastar o LED do conteúdo */
+  gap: 20px; /
   background: var(--superficie);
   transition: all 0.2s ease;
 }
@@ -526,7 +528,7 @@ h3 {
   height: 8px;
   border-radius: 50%;
   background: var(--add);
-  margin-top: 6px; /* 🔴 FIX: Ajustado para alinhar perfeitamente com a primeira linha do h3 */
+  margin-top: 6px; 
   box-shadow: 0 0 8px var(--add);
 }
 
@@ -543,7 +545,7 @@ h3 {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.7rem;
   color: var(--fraco);
-  margin-bottom: 8px; /* 🔴 FIX: Ajustado de 6px para 8px */
+  margin-bottom: 8px; 
 }
 
 .build p {
@@ -558,9 +560,9 @@ h3 {
 
 .milestone {
   display: grid;
-  grid-template-columns: 100px 1fr; /* 🔴 FIX: Aumentado de 80px para 100px para a tag "v1.0" não esbarrar no texto */
-  gap: 24px; /* 🔴 FIX: De 16px para 24px */
-  padding: 32px 0; /* 🔴 FIX: De 24px para 32px. Linhas pontilhadas precisam de espaço vertical */
+  grid-template-columns: 100px 1fr; 
+  gap: 24px;
+  padding: 32px 0; 
   border-top: 1px dashed var(--borda);
 }
 
@@ -582,13 +584,13 @@ h3 {
 .milestone p {
   color: var(--suave);
   font-size: 0.88rem;
-  margin-top: 6px; /* 🔴 FIX: Ajustado de 2px para 6px */
+  margin-top: 6px; 
 }
 
 .final {
   max-width: 960px;
   margin: 0 auto;
-  padding: 160px 32px; /* 🔴 FIX: Aumentado de 120px para 160px. O CTA de fechamento precisa de isolamento heróico */
+  padding: 160px 32px; 
   border-top: 1px solid var(--borda);
   text-align: center;
 }
@@ -597,7 +599,7 @@ h3 {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
   color: var(--suave);
-  margin-bottom: 24px; /* 🔴 FIX: Mudado de 20px para 24px */
+  margin-bottom: 24px; 
 }
 
 .final .term .ok {
@@ -605,9 +607,9 @@ h3 {
 }
 
 .final h2 {
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem); /* 🔴 FIX: Leve upgrade no tamanho */
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem); 
   max-width: 700px;
-  margin: 0 auto 24px; /* 🔴 FIX: Aumentado de 16px para 24px */
+  margin: 0 auto 24px; 
 }
 
 .final p {
@@ -618,12 +620,12 @@ h3 {
 
 .rodape {
   border-top: 1px solid var(--borda);
-  padding: 40px; /* 🔴 FIX: Uniformizado o padding do rodapé */
+  padding: 40px; 
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 24px; /* 🔴 FIX: Ajustado para 24px */
+  gap: 24px; 
   font-size: 0.78rem;
   color: var(--fraco);
   max-width: 960px;
@@ -633,7 +635,7 @@ h3 {
 
 .rodape nav {
   display: flex;
-  gap: 32px; /* 🔴 FIX: Links do rodapé muito juntos parecem bug de clique, aumentado de 24px para 32px */
+  gap: 32px; 
 }
 
 .rodape nav a {
@@ -656,9 +658,6 @@ h3 {
   transform: none;
 }
 
-/* ----------------------------------------- */
-/* MEDIA QUERIES REVISADOS                   */
-/* ----------------------------------------- */
 
 @media (max-width: 768px) {
   .nav {
@@ -670,7 +669,7 @@ h3 {
   }
 
   .hero {
-    padding: 120px 24px 80px; /* 🔴 FIX: Ajustado proporcionalmente */
+    padding: 120px 24px 80px; 
   }
 
   .release {
