@@ -10,10 +10,10 @@ function novaColuna(x, aleatorioY) {
   return {
     x: x,
     y: aleatorioY ? Math.random() * H : -Math.random() * H * 0.5,
-    vel: 0.8 + Math.random() * 1.5,
+    vel: 0.5 + Math.random() * 1.2,
     comprimento: 8 + Math.floor(Math.random() * 15),
     chars: [],
-    cor: paleta < 0.35 ? [56, 225, 212] : paleta < 0.65 ? [14, 165, 233] : [30, 41, 59]
+    cor: paleta < 0.25 ? [56, 225, 212] : paleta < 0.45 ? [14, 165, 233] : [30, 41, 59]
   };
 }
 
@@ -39,9 +39,7 @@ window.addEventListener('resize', redimensionar);
 const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function desenhar() {
-  ctx.fillStyle = 'rgba(9, 14, 23, 0.08)'; 
-  ctx.fillRect(0, 0, W, H);
-
+  ctx.clearRect(0, 0, W, H);
   ctx.font = '500 ' + TAM_FONTE + 'px "IBM Plex Mono", monospace';
   ctx.textAlign = 'center';
 
@@ -60,12 +58,12 @@ function desenhar() {
       if (yChar < -TAM_FONTE || yChar > H + TAM_FONTE) continue;
 
       if (j === 0) {
-        ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',0.8)';
-        ctx.shadowBlur = 8;
-        ctx.fillStyle = 'rgba(' + Math.min(r + 60, 255) + ',' + Math.min(g + 60, 255) + ',' + Math.min(b + 60, 255) + ',1)';
+        ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',0.6)';
+        ctx.shadowBlur = 6;
+        ctx.fillStyle = 'rgba(' + Math.min(r + 50, 255) + ',' + Math.min(g + 50, 255) + ',' + Math.min(b + 50, 255) + ',0.9)';
       } else {
         ctx.shadowBlur = 0;
-        const alpha = Math.max(0, 0.3 * (1 - j / c.comprimento));
+        const alpha = Math.max(0, 0.4 * (1 - j / c.comprimento));
         ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
       }
 
@@ -111,16 +109,11 @@ window.addEventListener('scroll', atualizarVersao, { passive: true });
 atualizarVersao();
 
 const tempoEl = document.getElementById('tempo-leitura');
-if (tempoEl) {
-  setInterval(() => {
-    tempoEl.textContent = Math.round((Date.now() - inicio) / 1000);
-  }, 1000);
-}
+setInterval(() => {
+  tempoEl.textContent = Math.round((Date.now() - inicio) / 1000);
+}, 1000);
 
 const observador = new IntersectionObserver((entradas) => {
-  entradas.forEach((e) => { 
-    if (e.isIntersecting) e.target.classList.add('visivel'); 
-  });
+  entradas.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visivel'); });
 }, { threshold: 0.1 });
-
 document.querySelectorAll('.revelar').forEach((el) => observador.observe(el));
