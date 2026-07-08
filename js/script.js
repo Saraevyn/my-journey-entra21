@@ -9,11 +9,11 @@ function novaColuna(x, aleatorioY) {
   const paleta = Math.random();
   return {
     x: x,
-    y: aleatorioY ? Math.random() * H : -Math.random() * H * 0.5,
-    vel: 0.5 + Math.random() * 1.2,
-    comprimento: 8 + Math.floor(Math.random() * 15),
+    y: aleatorioY ? Math.random() * H : -Math.random() * H * 0.4,
+    vel: 0.2 + Math.random() * 0.5, 
+    comprimento: 10 + Math.floor(Math.random() * 18), 
     chars: [],
-    cor: paleta < 0.25 ? [56, 225, 212] : paleta < 0.45 ? [14, 165, 233] : [30, 41, 59]
+    cor: paleta < 0.25 ? [56, 225, 212] : paleta < 0.45 ? [14, 165, 233] : [71, 85, 105]
   };
 }
 
@@ -39,7 +39,9 @@ window.addEventListener('resize', redimensionar);
 const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function desenhar() {
-  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(10, 10, 10, 0.08)';
+  ctx.fillRect(0, 0, W, H);
+  
   ctx.font = '500 ' + TAM_FONTE + 'px "IBM Plex Mono", monospace';
   ctx.textAlign = 'center';
 
@@ -47,7 +49,7 @@ function desenhar() {
     const c = colunas[i];
     c.y += c.vel;
 
-    if (Math.random() < 0.04) {
+    if (Math.random() < 0.01) {
       c.chars[Math.floor(Math.random() * c.chars.length)] = Math.random() < 0.5 ? '0' : '1';
     }
 
@@ -63,7 +65,7 @@ function desenhar() {
         ctx.fillStyle = 'rgba(' + Math.min(r + 50, 255) + ',' + Math.min(g + 50, 255) + ',' + Math.min(b + 50, 255) + ',0.9)';
       } else {
         ctx.shadowBlur = 0;
-        const alpha = Math.max(0, 0.4 * (1 - j / c.comprimento));
+        const alpha = Math.max(0, 0.5 * (1 - j / c.comprimento));
         ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
       }
 
