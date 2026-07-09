@@ -679,7 +679,6 @@ h3 {
   #hud {
     bottom: 24px; 
     right: 24px;
-    min-width: calc(100% - 48px); 
     padding: 16px;
   }
 
